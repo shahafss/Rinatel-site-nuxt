@@ -1,0 +1,24 @@
+{
+  "name": "rinatel-site",
+  "version": "1.0.0",
+  "description": "rinatel site with nuxt",
+  "author": "Shahaf Shumel",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free-solid": "^5.0.13",
+    "@fortawesome/free-solid-svg-icons": "^5.12.0",
+    "bootstrap-vue": "^2.2.2",
+    "nuxt": "^2.0.0",
+    "nuxt-fontawesome": "^0.4.0"
+  },
+  "devDependencies": {
+    "node-sass": "^4.13.1",
+    "sass-loader": "^8.0.2"
+  }
+}

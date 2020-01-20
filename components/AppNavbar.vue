@@ -2,29 +2,17 @@
   <header>
     <nav class="containerr">
       <nuxt-link to="/about">
-        <div
-          @click="selectTab('about')"
-          class="nav-about"
-          :class="{ active: isActive == 'about' }"
-        >
+        <div @click="selectTab('about')" class="nav-about">
           אודות רינתאל
         </div>
       </nuxt-link>
       <nuxt-link to="/acu">
-        <div
-          @click="selectTab('acu')"
-          class="nav-acu"
-          :class="{ active: isActive == 'acu' }"
-        >
+        <div @click="selectTab('acu')" class="nav-acu">
           דיקור סיני
         </div>
       </nuxt-link>
       <nuxt-link to="/">
-        <div
-          @click="selectTab('home')"
-          class="nav-home"
-          :class="{ active: isActive == 'home' }"
-        >
+        <div @click="selectTab('home')" class="nav-home">
           דף הבית
         </div>
       </nuxt-link>
@@ -35,9 +23,7 @@
 <script>
 export default {
   data() {
-    return {
-      isActive: "home"
-    };
+    return {};
   },
   methods: {
     selectTab(tab) {
@@ -87,7 +73,7 @@ header {
     color: white;
     transition: 0.5s background-color;
   }
-  .active {
+  .nuxt-link-exact-active {
     background-color: #7cb342;
     color: white;
     border-right: 2px solid white;

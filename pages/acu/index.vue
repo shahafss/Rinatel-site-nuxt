@@ -105,7 +105,10 @@ export default {
         method: "post",
         url: "http://localhost:8080/admin/add-product",
         data: bodyFormData,
-        headers: { "Content-Type": "multipart/form-data" }
+        headers: {
+          "Content-Type": "multipart/form-data",
+          "Access-Control-Allow-Origin": "*"
+        }
       })
         .then(res => {
           console.log(res.config.data);

@@ -18,6 +18,7 @@
         <form action="http://localhost:8080/admin/new-client" method="POST">
           <div class="form-group">
             <input
+              v-model="user.name"
               type="text"
               dir="rtl"
               placeholder="שם:"
@@ -27,6 +28,7 @@
               name="name"
             />
             <input
+              v-model="user.email"
               type="text"
               dir="rtl"
               placeholder="אימייל:"
@@ -36,6 +38,7 @@
               name="email"
             />
             <input
+              v-model="user.phone"
               type="text"
               dir="rtl"
               placeholder="טלפון:"
@@ -45,6 +48,7 @@
               name="phone"
             />
             <input
+              v-model="user.message"
               type="text"
               dir="rtl"
               placeholder="הודעה:"
@@ -54,7 +58,7 @@
               name="message"
             />
           </div>
-          <button type="submit" class="send-btn btn btn-primary">
+          <button @click.prevent="submit" class="send-btn btn btn-primary">
             שלח
           </button>
         </form>
@@ -64,11 +68,42 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
+  data() {
+    return {
+      user: {
+        name: "",
+        email: "",
+        phone: "",
+        message: ""
+      }
+    };
+  },
   methods: {
     submit() {
-      var link = "mailto:shahaflidor@gmail.com?&subject=jajaja&body=wawawawa";
-      window.location.href = link;
+      axios
+        .post(
+          "http://localhost:8080/admin/new-client",
+          JSON.stringify(this.user),
+          {
+            headers: {
+              "Content-type": "application/x-www-form-urlencoded"
+            }
+          }
+        )
+        .then(res => console.log("response-> ", res))
+        .catch(err => console.log("error message --> ", err));
+
+      // axios({
+      //   method: "post",
+      //   url: "http://localhost:8080/admin/new-client",
+      //   data: "asda",
+      //   headers: { "Content-Type": "application/json" }
+      // })
+      //   .then(res => console.log("response-> ", res))
+      //   .catch(err => console.log("error message --> ", err));
     }
   }
 };

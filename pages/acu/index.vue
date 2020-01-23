@@ -1,29 +1,44 @@
 <template>
   <div class="container">
     <div class="row">
-      <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+      <div
+        class="content col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3"
+      >
         <h1>HTTP</h1>
-        <div class="form-group">
-          <label>Username</label>
-          <input type="text" class="form-control" v-model="user.username" />
-        </div>
-        <div class="form-group">
-          <label>eMail</label>
-          <input type="text" class="form-control" v-model="user.email" />
-        </div>
-        <button @click="submit" class="btn btn-primary">Submit!</button>
+        <form action="http://localhost:8080/admin/add-product" method="POST">
+          <div class="form-group">
+            <!-- <label for="title">Title</label> -->
+            <!-- <input type="text" name="title" id="title" /> -->
+            <label for="username">Username</label>
+            <input
+              type="text"
+              v-model="user.username"
+              name="userusername"
+              id="username"
+              class="form-control"
+            />
+            <div>
+              <label for="email">eMail</label>
+              <input
+                class="form-control"
+                type="text"
+                v-model="user.email"
+                name="useremail"
+                id="email"
+              />
+            </div>
+          </div>
+          <button @click="submit" class="btn btn-primary">Submit!</button>
+        </form>
+
         <hr />
         <button @click="fetchData" class="btn btn-primary">Get Data</button>
         <hr />
-        {{ responseBody }}
         <button @click="toLocal" class="btn btn-primary">
           post to localhost
         </button>
         <hr />
-        <input v-model="date" type="date" />
-        <p>{{ date }}</p>
-        <p>currentDate {{ currentDate.split(",")[0] }}</p>
-        <p>{{ isEarlier }}</p>
+
         <ul class="list-group">
           <li class="list-group-item" v-for="(user, i) in users" :key="i">
             {{ user.username }} - {{ user.email }}
@@ -45,60 +60,76 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   data() {
     return {
-      date: "",
-      currentDate: new Date().toLocaleString(),
       user: {
         username: "34234",
         email: "32423"
       },
       users: [],
-      responseBody: ""
+      responseBody: "",
+      person: {
+        name: "Viv",
+        job: "Dancer",
+        age: 82
+      }
     };
   },
   methods: {
     submit() {
-      this.$http.post("", this.user).then(
-        response => {
-          console.log(response);
-        },
-        error => {
-          console.log(error);
-        }
-      );
+      axios
+        .post("https://rinatel-site.firebaseio.com/data.json", this.user)
+        .then(res => console.log(res))
+        .catch(error => console.log(error));
     },
     fetchData() {
-      this.$http
-        .get("")
-        .then(response => {
-          return response.json();
-        })
-        .then(data => {
+      axios
+        .get("https://rinatel-site.firebaseio.com/data.json")
+        .then(({ data }) => {
+          // console.log("grgrgrgr > ", data);
           const resultArray = [];
           for (let key in data) {
-            resultArray.push(data[key]);
+            const user = data[key];
+            user.id = key;
+            console.log(user);
+            resultArray.push(user);
           }
           this.users = resultArray;
         });
     },
     toLocal() {
-      this.$http.get("http://localhost:3000/").then(response => {
-        this.responseBody = response.body;
-        console.log(response.body);
-      });
+      axios({
+        method: "post",
+        url: "http://localhost:8080/admin/add-product",
+        data: bodyFormData,
+        headers: { "Content-Type": "multipart/form-data" }
+      })
+        .then(res => {
+          console.log(res.config.data);
+        })
+        .catch(res => {
+          console.log(res);
+        });
+      // axios.post("http://localhost:8080/admin/add-product", "pipsip");
+      // .then(response => {
+      //   this.responseBody = response.body;
+      //   console.log("the what ", response.body);
+      // });
     }
   },
-  computed: {
-    isEarlier() {
-      const dateObj = new Date(this.date).toLocaleDateString().split(",")[0];
-      console.log(dateObj);
-
-      return dateObj < this.currentDate;
-    }
-  }
+  computed: {}
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.row {
+  justify-content: center;
+  .content {
+    display: flex;
+    flex-direction: column;
+  }
+}
+</style>

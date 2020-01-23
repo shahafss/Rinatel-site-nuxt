@@ -15,7 +15,7 @@
         לקביעת תור לחצו
       </button>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <form action="">
+        <form action="http://localhost:8080/admin/new-client" method="POST">
           <div class="form-group">
             <input
               type="text"
@@ -23,40 +23,40 @@
               placeholder="שם:"
               onfocus="this.placeholder = ''"
               onblur="this.placeholder = 'שם:'"
+              class="form-control"
+              name="name"
             />
-          </div>
-          <div class="form-group">
             <input
               type="text"
               dir="rtl"
               placeholder="אימייל:"
               onfocus="this.placeholder = ''"
               onblur="this.placeholder = 'אימייל:'"
+              class="form-control"
+              name="email"
             />
-          </div>
-          <div class="form-group">
             <input
               type="text"
               dir="rtl"
               placeholder="טלפון:"
               onfocus="this.placeholder = ''"
               onblur="this.placeholder = 'טלפון:'"
+              class="form-control"
+              name="phone"
             />
-          </div>
-          <div class="form-group">
             <input
               type="text"
               dir="rtl"
               placeholder="הודעה:"
               onfocus="this.placeholder = ''"
               onblur="this.placeholder = 'הודעה:'"
+              class="form-control"
+              name="message"
             />
           </div>
-          <div class="form-group">
-            <button @click.prevent="submit" class="send-btn btn btn-primary">
-              שלח
-            </button>
-          </div>
+          <button type="submit" class="send-btn btn btn-primary">
+            שלח
+          </button>
         </form>
       </div>
     </div>

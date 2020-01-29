@@ -1,7 +1,10 @@
 <template>
+  <!-- <AppFade> -->
   <div class="container">
+    <h1>hey!</h1>
     <div class="row">
       <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+        <h1>whatttttttttt</h1>
         <h1>HTTP</h1>
         <div class="form-group">
           <label>Username</label>
@@ -42,9 +45,12 @@
       </div>
     </div>
   </div>
+  <!-- </AppFade> -->
 </template>
 
 <script>
+// import AppFade from "@/components/AppFade";
+
 export default {
   data() {
     return {
@@ -97,6 +103,9 @@ export default {
 
       return dateObj < this.currentDate;
     }
+  },
+  components: {
+    // AppFade
   }
 };
 </script>

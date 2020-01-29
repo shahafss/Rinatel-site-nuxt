@@ -35,6 +35,16 @@ export default {
       }
     ]
   },
+  render: {
+    bundleRenderer: {
+      directives: {
+        cww: function(vnode, dir) {
+          const style = vnode.data.style || (vnode.data.style = {});
+          style.backgroundColor = "#ff0016";
+        }
+      }
+    }
+  },
   /*
    ** Customize the progress-bar color
    */
@@ -46,7 +56,7 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [],
+  plugins: ["~plugins/veevalidate.js"],
   /*
    ** Nuxt.js dev-modules
    */
@@ -73,6 +83,7 @@ export default {
    ** Build configuration
    */
   build: {
+    transpile: ["vee-validate/dist/rules"],
     /*
      ** You can extend webpack config here
      */

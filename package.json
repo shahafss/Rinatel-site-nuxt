@@ -16,7 +16,7 @@
     "axios": "^0.19.2",
     "bootstrap-vue": "^2.3.0",
     "fibers": "^4.0.2",
-    "jquery": "^1.12.4",
+    "jquery": "^3.4.0",
     "nuxt": "^2.0.0",
     "nuxt-fontawesome": "^0.4.0",
     "sass": "^1.25.0",

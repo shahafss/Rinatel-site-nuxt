@@ -2,6 +2,7 @@
   <!-- <AppFade> -->
   <div class="container">
     <h1>hey!</h1>
+    <!-- <h1>hey!</h1>
     <div class="row">
       <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
         <h1>whatttttttttt</h1>
@@ -43,7 +44,7 @@
           סיני||דיקור סיני||דיקור סיני||
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
   <!-- </AppFade> -->
 </template>

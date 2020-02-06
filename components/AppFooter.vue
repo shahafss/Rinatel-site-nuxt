@@ -17,7 +17,8 @@ export default {};
 
 <style lang="scss" scoped>
 .footer-container {
-  position: absolute;
+  display: flex;
+  flex-direction: column;
   width: 100%;
   height: 15rem;
   background-color: #36383963;

@@ -11,8 +11,7 @@
       >
         לקביעת תור לחצו
       </button>
-      <!-- <transition name="fade" mode="out-in"> -->
-      <AppFade>
+      <AppFade fadeMode="fade">
         <div v-if="toggleDropdown" class="form-container">
           <validation-observer v-if="!isEmailSent" v-slot="{ invalid }">
             <form action="">
@@ -32,7 +31,7 @@
                     onblur="this.placeholder = 'שם:' "
                     class="form-control"
                   />
-                  <AppFade>
+                  <AppFade fadeMode="fade">
                     <div v-if="errors.length" class="error">
                       {{ errors[0] }}
                     </div>
@@ -54,7 +53,7 @@
                     class="form-control"
                     name="email"
                   />
-                  <AppFade>
+                  <AppFade fadeMode="fade">
                     <div v-if="errors.length" class="error">
                       {{ errors[0] }}
                     </div>
@@ -76,7 +75,7 @@
                     class="form-control"
                     name="phone"
                   />
-                  <AppFade>
+                  <AppFade fadeMode="fade">
                     <div v-if="errors.length" class="error">
                       {{ errors[0] }}
                     </div>

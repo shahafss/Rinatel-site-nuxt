@@ -1,5 +1,5 @@
 <template>
-  <AppFade>
+  <AppFade fadeMode="fade">
     <div>
       <div class="img-container">
         <app-slider></app-slider>

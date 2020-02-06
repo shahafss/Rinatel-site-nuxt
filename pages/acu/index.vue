@@ -1,66 +1,70 @@
 <template>
-  <div class="container">
-    <div class="row">
-      <div
-        class="content col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3"
-      >
-        <h1>HTTP</h1>
-        <form action="http://localhost:8080/admin/add-product" method="POST">
-          <div class="form-group">
-            <!-- <label for="title">Title</label> -->
-            <!-- <input type="text" name="title" id="title" /> -->
-            <label for="username">Username</label>
-            <input
-              type="text"
-              v-model="user.username"
-              name="userusername"
-              id="username"
-              class="form-control"
-            />
-            <div>
-              <label for="email">eMail</label>
+  <div class="container-acu">
+    <AppFade fadeMode="fade">
+      <div class="row">
+        <div
+          class="content col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3"
+        >
+          <h1>what</h1>
+          <h1>HTTP</h1>
+          <form action="http://localhost:8080/admin/add-product" method="POST">
+            <div class="form-group">
+              <!-- <label for="title">Title</label> -->
+              <!-- <input type="text" name="title" id="title" /> -->
+              <label for="username">Username</label>
               <input
-                class="form-control"
                 type="text"
-                v-model="user.email"
-                name="useremail"
-                id="email"
+                v-model="user.username"
+                name="userusername"
+                id="username"
+                class="form-control"
               />
+              <div>
+                <label for="email">eMail</label>
+                <input
+                  class="form-control"
+                  type="text"
+                  v-model="user.email"
+                  name="useremail"
+                  id="email"
+                />
+              </div>
             </div>
+            <button @click="submit" class="btn btn-primary">Submit!</button>
+          </form>
+
+          <hr />
+          <button @click="fetchData" class="btn btn-primary">Get Data</button>
+          <hr />
+          <button @click="toLocal" class="btn btn-primary">
+            post to localhost
+          </button>
+          <hr />
+
+          <ul class="list-group">
+            <li class="list-group-item" v-for="(user, i) in users" :key="i">
+              {{ user.username }} - {{ user.email }}
+            </li>
+          </ul>
+          <div>
+            דיקור סיני||דיקור סיני||דיקור סיני||דיקור סיני||דיקור סיני||דיקור
+            סיני||דיקור סיני||דיקור סיני||דיקור סיני||דיקור סיני||דיקור
+            סיני||דיקור סיני||דיקור סיני||דיקור סיני||דיקור סיני||דיקור
+            סיני||דיקור סיני||דיקור סיני||דיקור סיני||דיקור סיני||דיקור
+            סיני||דיקור סיני||דיקור סיני||דיקור סיני||דיקור סיני||דיקור
+            סיני||דיקור סיני||דיקור סיני||דיקור סיני||דיקור סיני||דיקור
+            סיני||דיקור סיני||דיקור סיני||דיקור סיני||דיקור סיני||דיקור
+            סיני||דיקור סיני||דיקור סיני||
           </div>
-          <button @click="submit" class="btn btn-primary">Submit!</button>
-        </form>
-
-        <hr />
-        <button @click="fetchData" class="btn btn-primary">Get Data</button>
-        <hr />
-        <button @click="toLocal" class="btn btn-primary">
-          post to localhost
-        </button>
-        <hr />
-
-        <ul class="list-group">
-          <li class="list-group-item" v-for="(user, i) in users" :key="i">
-            {{ user.username }} - {{ user.email }}
-          </li>
-        </ul>
-        <div>
-          דיקור סיני||דיקור סיני||דיקור סיני||דיקור סיני||דיקור סיני||דיקור
-          סיני||דיקור סיני||דיקור סיני||דיקור סיני||דיקור סיני||דיקור
-          סיני||דיקור סיני||דיקור סיני||דיקור סיני||דיקור סיני||דיקור
-          סיני||דיקור סיני||דיקור סיני||דיקור סיני||דיקור סיני||דיקור
-          סיני||דיקור סיני||דיקור סיני||דיקור סיני||דיקור סיני||דיקור
-          סיני||דיקור סיני||דיקור סיני||דיקור סיני||דיקור סיני||דיקור
-          סיני||דיקור סיני||דיקור סיני||דיקור סיני||דיקור סיני||דיקור
-          סיני||דיקור סיני||דיקור סיני||
         </div>
       </div>
-    </div>
+    </AppFade>
   </div>
 </template>
 
 <script>
 import axios from "axios";
+import AppFade from "@/components/AppFade";
 
 export default {
   data() {
@@ -123,7 +127,10 @@ export default {
       // });
     }
   },
-  computed: {}
+  computed: {},
+  components: {
+    AppFade
+  }
 };
 </script>
 
